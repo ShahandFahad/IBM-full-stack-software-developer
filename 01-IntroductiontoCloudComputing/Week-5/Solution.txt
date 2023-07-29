@@ -1,0 +1,7 @@
+PUBLIC URL: 
+
+Object Storage
+https://ibmfullstackpractice.s3.jp-tok.cloud-object-storage.appdomain.cloud
+
+File URL
+https://ibmfullstackpractice.s3.jp-tok.cloud-object-storage.appdomain.cloud/index.html

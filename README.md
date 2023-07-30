@@ -21,3 +21,5 @@ This program is ACE® recommended—when you complete, you can earn up to 18 col
 # Certificates
 
 [01-Introduction to Cloud Computing](https://coursera.org/share/8f69700f71b8798e0f21ccba220069fb)
+
+[02-Introduction to Web Development with HTML, CSS, JavaScript](https://coursera.org/share/20492cac6fc0dab8c96fa15c44044f87)

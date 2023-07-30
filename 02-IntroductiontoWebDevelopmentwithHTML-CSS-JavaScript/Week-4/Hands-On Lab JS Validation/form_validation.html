@@ -1,0 +1,50 @@
+<!-- Lab: Validating a JavaScript form -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 2. Use the <script> tag -->
+        <script type="application/javascript">
+        // 3. Add a JavaScript functio
+        // 4. Access HTML controls within JavaScript
+        // 5. Access and check data
+        // 6. Execute a set of statements based on a condition
+        // 7. Display error messages
+        // 8. Execute a function when the form is submitted
+        function checkdata(){
+            //Create references to the input elements we wish to validate
+            var username = document.getElementById("name");
+            var email_address = document.getElementById("email");
+
+            //Check if username field is empty
+            if(username.value == ""){
+                    alert("Please enter the name");
+                    username.focus();
+                    return false;
+            }
+            //Check if email field is empty
+            if(email_address.value == ""){
+                    alert("Please enter the email");
+                    email_address.focus();
+                    return false;
+            }
+            //If all is well return true.
+            return true;
+        }
+        </script>
+        <title>Contact Details</title>
+    </head>
+    <body>
+        <!-- 1. Create an HTML form -->
+        <h2>Enter your contact details:</h2> <br>
+        <form id="form1" onsubmit="return checkdata()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <br><br>
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" name="email">
+            <br><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </body>
+</html>

@@ -25,3 +25,5 @@ This program is ACE® recommended—when you complete, you can earn up to 18 col
 [02-Introduction to Web Development with HTML, CSS, JavaScript](https://coursera.org/share/20492cac6fc0dab8c96fa15c44044f87)
 
 [03-Getting Started with Git and GitHub](https://coursera.org/share/04199c3db7909895a15239aa5eb618e0)
+
+[04-Developing Front-End Apps with React](https://coursera.org/share/c09b0904aa9d406099b5d83344d1edf6)

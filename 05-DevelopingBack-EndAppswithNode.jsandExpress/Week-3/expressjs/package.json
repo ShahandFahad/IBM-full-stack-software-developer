@@ -1,0 +1,25 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "expressServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
+    "express": "^4.18.2",
+    "express-react-views": "^0.11.0",
+    "express-session": "^1.17.3",
+    "ibm-watson": "^7.1.2",
+    "jsonwebtoken": "^9.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.2"
+  }
+}

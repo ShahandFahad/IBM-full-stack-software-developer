@@ -1,0 +1,237 @@
+<html>
+<style>
+.calc_button {
+    display:flex;
+    height:4em;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 1.4em;
+    background-color: #e0e1e6;
+    color: black;
+    outline: 1px solid #888;
+}
+
+.calc_operator {
+    display:flex;
+    height:4em;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    font-weight: normal;
+    font-size: 1.4em;
+    background-color: orange;
+    color: black;
+    outline: 1px solid #888;
+}
+
+.calc_input {
+    display:flex;
+    height:4em;
+    justify-content: flex-end;
+    flex: 1;
+    align-items: center;
+    font-weight:heavier;
+    font-size: 1.4em;
+    background-color:black;
+    color:  #e0e1e6;
+    outline: 1px solid #888;
+    padding-right: .5cm;
+    padding-left: .5cm;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width:100%;  
+  }
+  
+  .calc_box {
+    width: 400px;
+    height:600px;
+  }
+  
+  .button_rows {
+    display:flex;
+    width:100%;
+  }
+  
+  
+</style>
+<script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    input:"",
+    previousNumber:"",
+    currentNumber:"",
+    operator:"",
+    previousChar:""
+  }
+  
+  isValidOperand = (val) => {
+    let operandslist = ['+','-','X','/'];
+    return operandslist.includes(val);
+  }
+
+  addToInput = (val) => {
+    if(val === 'Clear') {
+      this.setState({input: ""});  
+      this.setState({previousNumber: ""});  
+      this.setState({operator: ""});  
+      this.setState({previousChar: ""});  
+      this.setState({currentNumber: ""});  
+    } else if (this.isValidOperand(val)) {
+      if (this.state.operator === "") {
+        this.setState({operator:val});
+        this.setState({previousNumber: this.state.input.toString()});  
+        this.setState({input: this.state.input + val});  
+      } else {
+        this.setState({operator:val});
+        if(this.isValidOperand(this.state.input.charAt(this.state.input.length-1))) {
+            this.setState({input: this.state.previousNumber + val});  
+        } else {
+            let calcValue = this.calculateValue( this.state.previousNumber,
+                this.state.currentNumber,
+                this.state.operator)
+            this.setState({input:calcValue + val}); 
+            this.setState({previousNumber:calcValue}); 
+            this.setState({currentNumber:""});
+        }
+      }
+    } else if (val === "=") {
+      if(this.state.previousChar === val) {
+        return;
+      }
+      if(this.state.previousNumber !== "" && this.state.input !== "") {
+        let operatedVal = this.calculateValue( this.state.previousNumber,
+          this.state.currentNumber,
+          this.state.operator);
+        this.setState({input:operatedVal});
+        this.setState({previousNumber: operatedVal});  
+        this.setState({operator: ""});  
+        this.setState({currentNumber:""});
+      }
+    } else {
+      let inputLen = this.state.input.length;
+      if(inputLen == 15) {
+          return;
+      }
+      if(this.state.operator !== "") {
+        if(this.state.currentNumber.length > 15) {
+            return;
+        }
+        this.setState({currentNumber: this.state.currentNumber + val});
+      } 
+      if(val !== "0" || 
+          (inputLen != 0 && this.isValidOperand(this.state.previousChar) == false)) {
+        this.setState({input: this.state.input + val});
+        return;
+      }
+      if (this.state.previousChar === "=") {
+        this.setState({input:val});
+        this.setState({currentNumber:""});
+        this.setState({previousNumber:""});
+        this.setState({operator:""});
+      }
+    }    
+    this.setState({previousChar:val});
+  }
+
+  calculateValue = (num1,num2,op) => {
+    switch(op) {
+      case "+": return parseFloat(num1)+parseFloat(num2);
+      case "-": return parseFloat(num1)-parseFloat(num2);
+      case "X": return parseFloat(num1)*parseFloat(num2);
+      case "/": return parseFloat(num1)/parseFloat(num2);
+    }
+    return 0;
+  }
+
+  render = ()=> {
+    return <div className="App">
+        <div className="calc_box">
+          <div className="button_rows">
+            <Input>{this.state.input}</Input>
+          </div>
+          <div className="button_rows">
+            <Button handleClick={this.addToInput}>7</Button>
+            <Button  handleClick={this.addToInput}>8</Button>
+            <Button handleClick={this.addToInput}>9</Button>
+            <Button handleClick={this.addToInput}>/</Button>
+          </div>
+          <div className="button_rows">
+            <Button handleClick={this.addToInput}>4</Button>
+            <Button  handleClick={this.addToInput}>5</Button>
+            <Button handleClick={this.addToInput}>6</Button>
+            <Button handleClick={this.addToInput}>X</Button>
+          </div>
+          <div className="button_rows">
+            <Button handleClick={this.addToInput}>1</Button>
+            <Button  handleClick={this.addToInput}>2</Button>
+            <Button handleClick={this.addToInput}>3</Button>
+            <Button handleClick={this.addToInput}>+</Button>
+          </div>
+          <div className="button_rows">
+            <Button handleClick={this.addToInput}>.</Button>
+            <Button  handleClick={this.addToInput}>0</Button>
+            <Button handleClick={this.addToInput}>=</Button>
+            <Button handleClick={this.addToInput}>-</Button>
+          </div>
+          <div className="button_rows">
+          <Button  handleClick={this.addToInput}>Clear</Button>
+          </div>
+        </div>
+    </div>;
+  }
+
+}
+
+class Button extends React.Component {
+    operandslist = ['+','-','X','/'];
+
+    isOperator(value) {
+        if (this.operandslist.includes(value)) {
+            return "calc_operator";
+        }
+        return "calc_button";
+    }
+
+    render() {
+        return(
+            <div    className={this.isOperator(this.props.children)} 
+                    onClick={()=> this.props.handleClick(this.props.children)}>
+                {this.props.children}
+            </div>);
+        
+    }
+
+}
+
+class Input extends React.Component {
+    render() {
+        return(<div className="calc_input">{this.props.children}</div>);
+    }
+}
+
+ReactDOM.render(<App/>,document.getElementById("root"));
+
+</script>
+
+</body>
+</html>

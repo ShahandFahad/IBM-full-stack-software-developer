@@ -27,3 +27,5 @@ This program is ACE® recommended—when you complete, you can earn up to 18 col
 [03-Getting Started with Git and GitHub](https://coursera.org/share/04199c3db7909895a15239aa5eb618e0)
 
 [04-Developing Front-End Apps with React](https://coursera.org/share/c09b0904aa9d406099b5d83344d1edf6)
+
+[05-Developing Back-End Apps with Node.js and Express](https://www.coursera.org/account/accomplishments/verify/LF6XA5LWXEQX?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course)

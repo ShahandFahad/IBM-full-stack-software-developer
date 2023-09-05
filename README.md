@@ -29,3 +29,5 @@ This program is ACE® recommended—when you complete, you can earn up to 18 col
 [04-Developing Front-End Apps with React](https://coursera.org/share/c09b0904aa9d406099b5d83344d1edf6)
 
 [05-Developing Back-End Apps with Node.js and Express](https://www.coursera.org/account/accomplishments/verify/LF6XA5LWXEQX?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course)
+
+[06-Python for Data Science, AI & Development](https://coursera.org/share/b8ac938b04dce9c486ddf28d3d206e63)

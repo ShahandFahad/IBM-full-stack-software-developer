@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a style="color:black;" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a  style="color:black;" href="/create">New Customer</a>
+                    </li>
+                    <li>
+                        <a style="color:black;" href="/summary">Summary</a>
+                    </li>
+                </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

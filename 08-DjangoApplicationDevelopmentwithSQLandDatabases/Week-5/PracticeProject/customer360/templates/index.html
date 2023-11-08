@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title>Home Page</title>
+    </head>
+    <script>
+       function set_customer(){
+        var cinput = document.querySelector('input[name="selected_customers"]:checked');
+            if (cinput){
+                cid = cinput.value;
+                window.location = "/interact/"+cid;
+            }
+            else
+                alert("Please select a customer");
+       }
+    </script>
+    <body>
+        <h1>Welcome to Customer 360</h1>
+        <p>Interact and Manage your Customers</p>
+        <a class="btn btn-primary" style="font-weight:bold; display:inline" onclick="set_customer()">Interact</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Selected</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr>
+                        <td>{{customer.id }}</td>
+                        <td>{{customer.name }}</td>
+                        <td>{{customer.email }}</td>
+                        <td>{{customer.phone }}</td>
+                        <td>{{customer.address }}</td>
+                        <td>
+                            <input type="radio" name="selected_customers" value="{{ customer.id }}">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
+{% endblock content %}

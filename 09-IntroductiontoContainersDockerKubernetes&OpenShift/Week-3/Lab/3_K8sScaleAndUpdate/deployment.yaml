@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      run: hello-world
+  template:
+    metadata:
+      labels:
+        run: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: us.icr.io/sn-labs-devshahfahad/hello-world:1
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          limits:
+            cpu: 50m
+          requests:
+            cpu: 20m 
+      imagePullSecrets:
+        - name: icr

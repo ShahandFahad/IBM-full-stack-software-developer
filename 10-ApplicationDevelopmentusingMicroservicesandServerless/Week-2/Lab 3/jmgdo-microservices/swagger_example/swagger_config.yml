@@ -1,0 +1,66 @@
+swagger: '2.0'
+info:
+  Version: '2.0'
+  title: Task Organizer
+  description: Organize and maintain tasks
+host: lavanyas-5000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai
+paths:
+  /tasks:
+    get:
+      summary: Returns a list of tasks.
+      description: Optional extended description in Markdown.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '405':
+          description: Invalid Input
+  /task/{taskname}:
+    get:
+      tags:
+        - Task name
+      summary: Returns a task by name.
+      parameters:
+        - in: path
+          name: taskname
+          required: true
+          type: string
+          minimum: 1
+          description: Name of the task to be obtained
+      responses:
+        '200':
+          description: Successfully fetched task
+    delete:
+      tags:
+        - Task name
+      summary: Delete a task by name.
+      parameters:
+        - in: path
+          name: taskname
+          required: true
+          type: string
+          minimum: 1
+          description: Name of the task to be deleted
+      responses:
+        '200':
+          description: Successfully fetched task
+  /task:
+    post:
+      summary: Adding task to list
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          required: true
+          description: Task name
+        - in: formData
+          name: description
+          type: string
+          required: true
+          description: Description of the task
+      responses:
+        '200':
+          description: OK

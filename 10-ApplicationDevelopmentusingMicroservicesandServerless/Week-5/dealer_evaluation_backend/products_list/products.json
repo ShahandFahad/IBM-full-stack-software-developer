@@ -1,0 +1,15 @@
+{
+"products": [{
+"product":"Headphones",
+"Dealers":["Binglee","DXC Electronics","Bobay"]
+},{
+  "product":"Laptop",
+  "Dealers":["GH Computers","Tech city","Ez PC"]
+},{
+  "product":"Mouse",
+  "Dealers":["DXC Electronics","Tech City"]
+  },{
+  "product":"Printer",
+  "Dealers":["Binglee","DXC Electronics","Bobay","GH Computers"]
+  }]
+}

@@ -1,0 +1,34 @@
+  {
+  "dealers": [{
+    "Dealer":"Binglee",
+    "products":{
+    "Headphones":"$30",
+    "Printer":"$75"
+    }},{
+      "Dealer":"DXC Electronics",
+      "products":{
+      "Mouse":"$20",
+      "Printer":"$85",
+      "Headphones":"$20"
+      }},{
+      "Dealer":"Bobay",
+      "products":{
+      "Headphones":"$20",
+      "Printer":"$80"}
+      },{
+        "Dealer":"Tech City",
+        "products":
+        {"Mouse":"$20",
+        "Laptop":"$850"}
+      },{
+        "Dealer":"Ez PC",
+        "products":
+        {"Laptop":"$1000"
+      }},{
+        "Dealer":"GH Computers",
+        "products":
+        {"Laptop":"$1500",
+        "Printer":"$95"}
+      }
+      ]
+  }

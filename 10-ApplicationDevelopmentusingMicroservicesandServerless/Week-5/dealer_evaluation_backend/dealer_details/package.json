@@ -1,0 +1,26 @@
+{
+  "name": "get-started-node",
+  "main": "server.js",
+  "description": "An introduction to developing Node.js apps on the IBM Cloud platform",
+  "version": "0.1.1",
+  "private": false,
+  "engines": {
+    "node": "16.13.0",
+    "npm": "9.2.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Cloud/get-started-node"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.x",
+    "cors": "^2.8.5",
+    "express": "^4.15.x",
+    "nodemon": "^2.0.6"
+  },
+  "author": "IBM Corp",
+  "license": "Apache-2.0"
+}

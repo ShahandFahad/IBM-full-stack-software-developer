@@ -1,0 +1,102 @@
+<html>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    td:nth-child(even), th:nth-child(even) {
+  background-color: #D6EEEE;
+}
+  </style>
+  <script>
+    let produrl = "https://prodlist.19uc6ltf8j5o.us-south.codeengine.appdomain.cloud/"
+    let dealerurl = "https://dealerdetails.19uc6ltf8j5o.us-south.codeengine.appdomain.cloud/"
+
+    axios.get(produrl+"products").then(res=>{
+      let selEl = document.createElement("select");
+      selEl.setAttribute("id","selProd")
+      selEl.setAttribute("onChange","getDealers()")
+      let defaultOpt = document.createElement("option");
+      defaultOpt.setAttribute('value',"--SELECT--");
+      defaultOpt.innerText = "--SELECT--";
+      selEl.appendChild(defaultOpt);
+
+      res.data.products.forEach(element => {
+        let optEl = document.createElement("option");
+        optEl.setAttribute('value',element);
+        optEl.innerText = element;
+        selEl.appendChild(optEl);
+      })
+      let prod = document.getElementById('prod_dd');
+      prod.childNodes.forEach(node=>prod.removeChild(node));
+      prod.appendChild(selEl);
+    });
+
+    let getDealers = ()=>{
+      let valToFetch = document.getElementById("selProd").value;
+
+      if(valToFetch != "--SELECT--") {
+        axios.get(produrl+"getdealers/"+valToFetch).then(res=>{
+        let selEl = document.createElement("select");
+        selEl.setAttribute("id","selDealer")
+        selEl.setAttribute("onChange","getDealerProductPrice()")
+        let defaultOpt = document.createElement("option");
+        defaultOpt.setAttribute('value',"--SELECT--");
+        defaultOpt.innerText = "--SELECT--";
+        selEl.appendChild(defaultOpt);
+        res.data.dealers.forEach((element)=>{
+          let optEl = document.createElement("option");
+          optEl.setAttribute('value',element);
+          optEl.innerText = element;
+          selEl.appendChild(optEl);
+        })
+        let optEl = document.createElement("option");
+        optEl.setAttribute('value','All Dealers');
+        optEl.innerText = 'All Dealers';
+        selEl.appendChild(optEl);
+
+        let dealers = document.getElementById('dealers');
+        dealers.childNodes.forEach(node=>dealers.removeChild(node));
+        dealers.appendChild(selEl);
+        })
+    }
+  }
+  
+    let getDealerProductPrice = ()=>{
+      let prodvalToFetch = document.getElementById("selProd").value;
+      let dealervalToFetch = document.getElementById("selDealer").value;
+
+      let pricingEl = document.getElementById("pricing");
+      pricingEl.childNodes.forEach(node=>pricingEl.removeChild(node));
+
+      if (dealervalToFetch != 'All Dealers') {
+        axios.get(dealerurl+"price/"+dealervalToFetch+"/"+prodvalToFetch).then(res=>{
+          document.getElementById("pricing").innerText = res.data.message;
+        })
+      } else {
+        axios.get(dealerurl+"allprice/"+prodvalToFetch).then(res=>{
+          let table = document.createElement("table")
+
+          res.data.prices.forEach((price)=>{
+            let tr = document.createElement("tr")
+            tr.innerHTML = "<td>"+price.key + "</td><td>"+price.value + "</td>";
+            table.appendChild(tr);
+          });
+
+          if(table.hasChildNodes()) {
+            pricingEl.appendChild(table);
+          }
+        })
+      }
+    }
+    
+
+</script>
+<h1>
+    Products price comparison
+    <div style='margin:6mm' id='prod_dd'></div>
+    <div style='margin:6mm' id='dealers'></div>
+    <div style='margin:6mm;font-size: large;' id='pricing'></div>
+
+</h1>
+
+
+
+</html>

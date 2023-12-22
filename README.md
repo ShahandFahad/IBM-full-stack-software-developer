@@ -39,3 +39,5 @@ This program is ACE® recommended—when you complete, you can earn up to 18 col
 [09-Introduction to Containers w/ Docker, Kubernetes & OpenShift](https://coursera.org/share/f3488f93ee3f08eac4e75fe1df172d33)
 
 [10-Application Development using Microservices and Serverless](https://coursera.org/share/95e70b74979cccd7b96f3b248186a0f6)
+
+[12-Full Stack Software Developer Assessment](https://coursera.org/share/717e5fdcf261779282157039e7668703)

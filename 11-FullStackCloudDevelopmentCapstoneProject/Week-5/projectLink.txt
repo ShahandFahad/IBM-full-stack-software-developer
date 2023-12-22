@@ -1,0 +1,11 @@
+Link to capstone project: 
+
+https://github.com/ShahandFahad/agfzb-CloudAppDevelopment_Capstone.git
+
+
+
+Other Repositries, Can take help from:
+
+https://github.com/lkpklkk/agfzb-CloudAppDevelopment_Capstone/blob/master/server/djangoapp/templates/djangoapp/add_review.html
+
+https://github.com/SebastianRokholt/Full-Stack-Cloud-Dev-Capstone-Project/blob/main/server/djangoapp/views.py
